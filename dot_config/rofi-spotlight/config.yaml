@@ -1,0 +1,15 @@
+no match command: qutebrowser
+directory: 
+    name: PDF vari
+    path: /data/libriVari/
+    pattern: *.pdf
+    recursive: true
+    program: zathura
+    icon: 
+directory: 
+    name: PDF uni
+    path: /data/secondoAnno/
+    pattern: *.pdf
+    recursive: true
+    program: zathura
+    icon: 
