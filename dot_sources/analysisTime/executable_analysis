@@ -1,0 +1,17 @@
+#!/bin/bash
+
+###################################################################
+#Script Name	: analysis
+#Description	: run stramlit analysis
+#Args         	: none
+#Author       	: Federico Izzo
+#Email         	: federico.izzo99@gmail.com
+#Last Update    : 29-02-2020
+###################################################################
+
+# helpMessage=
+
+# [ -z $1 ] && echo -e $helpMessage && exit
+
+cd /home/fedeizzo/.sources/analysisTime
+streamlit run analisi.py

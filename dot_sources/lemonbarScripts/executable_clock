@@ -1,0 +1,7 @@
+#!/bin/bash
+Clock(){
+	TIME=$(date "+%H:%M")
+	echo -e -n "   ${TIME}"
+}
+
+Clock
