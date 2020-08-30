@@ -1,0 +1,14 @@
+add_newline = false
+
+[character]
+symbol = "➜"
+
+[package]
+disabled = true
+
+[directory]
+truncation_length = 8
+
+[cmd_duration]
+min_time = 2000
+prefix = " "
