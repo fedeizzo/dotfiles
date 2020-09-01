@@ -128,3 +128,4 @@ alias zathura="devour zathura"
 alias llpp="devour llpp"
 alias sxiv="devour sxiv"
 eval $(starship init zsh)
+alias cz="chezmoi"

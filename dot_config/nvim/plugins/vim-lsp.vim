@@ -8,6 +8,9 @@ let g:lsp_settings = {
 \   },
 \  'typescript-language-server': {
 \     'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact'],
+\   },
+\  'nimlsp': {
+\
 \   }
 \}
 

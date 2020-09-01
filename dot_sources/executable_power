@@ -1,9 +1,11 @@
 #!/bin/bash
 
-chosen=$(echo -e "Suspend\nShutdown\nReboot" | rofi -dmenu -i)
+chosen=$(echo -e "Suspend\nLock\nShutdown\nReboot" | rofi -dmenu -i)
 
 if [[ $chosen = "Shutdown" ]]; then
 	systemctl poweroff
+elif [[ $chosen = "Lock" ]]; then
+    betterlockscreen -l
 elif [[ $chosen = "Reboot" ]]; then
 	systemctl reboot
 elif [[ $chosen = "Suspend" ]]; then

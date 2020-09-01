@@ -1,4 +1,5 @@
 no match command: qutebrowser
+iterate over PATH: true
 directory: 
     name: PDF vari
     path: /data/libriVari/

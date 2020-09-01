@@ -113,6 +113,10 @@ augroup mm_buf_cmds
 augroup end
 
 " ##########################################
+" Plugged installation
+" ##########################################
+
+" ##########################################
 " plugin installation
 " ##########################################
 call plug#begin('~/.local/share/nvim/plugged')
