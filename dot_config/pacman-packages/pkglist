@@ -175,7 +175,6 @@ icu
 imagemagick
 imgur-screenshot-git
 imlib2
-informant
 intel-gmmlib
 intel-gpu-tools
 intel-media-driver
@@ -449,7 +448,6 @@ ntp
 numlockx
 nvidia
 nvidia-utils
-nvm
 obinskit
 ocl-icd
 openal

@@ -72,9 +72,9 @@ super + Return
 	$TERMINAL
 
 # Open dmenu
-# dmenu_extended_run --no-settings
+# rofi -show drun
 super + d
-	rofi -show drun
+	rofi_spotlight
 
 # Block/suspend screen with betterlockscreen
 super + {shift, control} + x
@@ -99,10 +99,6 @@ super + shift + c
 # Open emoji
 super + shift + d
     rofi -show emoji -modi emoji
-
-# Open emoji
-super + ctrl + d
-	rofi_spotlight
 
 # Screenshot
 super + F1

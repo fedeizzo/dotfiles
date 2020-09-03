@@ -94,6 +94,12 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <Leader>a :w<CR>
 nnoremap <silent> <Leader>q :q<CR>
 
+" change split navigatin
+nnoremap  <C-h> <C-w><C-h>
+nnoremap  <C-j> <C-w><C-j>
+nnoremap  <C-k> <C-w><C-k>
+nnoremap  <C-l> <C-w><C-l>
+
 " Goyo keybind
 nnoremap <Leader>g :Goyo<CR>
 
