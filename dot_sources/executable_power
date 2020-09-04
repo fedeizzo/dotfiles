@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(echo -e "Suspend\nLock\nShutdown\nReboot" | rofi -dmenu -i)
+chosen=$(echo -e "Suspend\nLock\nShutdown\nReboot" | rofi -dmenu -i -p "")
 
 if [[ $chosen = "Shutdown" ]]; then
 	systemctl poweroff
