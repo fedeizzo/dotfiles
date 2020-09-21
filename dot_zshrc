@@ -112,7 +112,7 @@ alias ec='wiki c'
 alias SS='systemctl'
 alias com='eval "$(pipenv --completion)"'
 alias it='setxkbmap it && xmodmap $HOME/.Xmodmap.back'
-alias us='setxkbmap us && xmodmap $HOME/.Xmodmap.back'
+alias us='setxkbmap -layout us -variant altgr-intl && xmodmap $HOME/.Xmodmap.back'
 alias enit='trans :it'
 alias iten='trans :en'
 alias dh='notify-send "$(dirs -v)"'
@@ -129,3 +129,5 @@ alias llpp="devour llpp"
 alias sxiv="devour sxiv"
 eval $(starship init zsh)
 alias cz="chezmoi"
+alias v="nvim"
+alias open="xdg-open"

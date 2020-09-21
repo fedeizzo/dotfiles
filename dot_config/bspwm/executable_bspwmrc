@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 # Federico Izzo's bspwm cofig
 
 # Clear clipboard history

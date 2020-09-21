@@ -20,7 +20,7 @@ cmd open ${{
         video/*) devour vlc "$f";;
         application/pdf) devour zathura "$f";;
         image/*) devour sxiv "$f";;
-        *) xdg-open "$f";;
+        *) devour xdg-open "$f";;
     esac
 }}
 

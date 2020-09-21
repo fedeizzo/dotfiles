@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 print_ok() {
     printf "\e[32m%b\e[0m" "$1""\n"
 }
@@ -121,9 +122,11 @@ print_ok "done"
 # bw login
 
 # TODO file da spostare
+# DONE nixos
 # main.conf /etc/connman
 # pacman.conf /etc
 # tlp.conf /etc
+# DONE nixos
 # default.pa /etc/pulse
 # bluetooth folder /var/lib
 # connman folder /var/lib

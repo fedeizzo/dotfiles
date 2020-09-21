@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 Cal() {
     DATE=$(date "+%d-%m-%Y")
     echo -e -n "%{A1:cal:} ${DATE}%{A}"

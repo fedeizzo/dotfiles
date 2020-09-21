@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 histfile="/tmp/dmenu_calc.log"
 

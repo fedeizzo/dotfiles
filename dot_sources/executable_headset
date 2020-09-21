@@ -1,4 +1,5 @@
-#!/bin/bash 
+#!/usr/bin/env bash
+
 if [[ "$(bluetoothctl info '38:18:4C:D4:10:3C' | grep "Connected: no")" = *Connected:\ no ]]; then
     bluetoothctl connect '38:18:4C:D4:10:3C'
     pacmd set-default-sink bluez_sink.38_18_4C_D4_10_3C.a2dp_sink 

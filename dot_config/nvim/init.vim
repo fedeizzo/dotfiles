@@ -157,6 +157,7 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " javascript
 Plug 'mxw/vim-jsx', { 'for': 'javascript' } " jsx
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript
 Plug 'cespare/vim-toml' " toml
+Plug 'LnL7/vim-nix' " nix
 
 " colorchemes
 Plug 'arcticicestudio/nord-vim'            " colorscheme

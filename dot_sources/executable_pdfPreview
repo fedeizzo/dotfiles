@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 TMPP="/tmp/zathura-preview-$PPID.pdf"
 

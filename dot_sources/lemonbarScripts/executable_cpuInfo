@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 white="#FFFFFF"
 whiteUnfocus="#55FFFFFF"
 red='#FF0000'

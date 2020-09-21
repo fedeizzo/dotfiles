@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 ReadConfig(){
     result=$(awk -v pattern="$1" -F. '$0~pattern{print $2}' $XDG_CONFIG_HOME/lemonbar/config)
     echo $result
