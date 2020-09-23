@@ -121,8 +121,8 @@ alias tw='streamlink -p "devour vlc"'
 alias streamlink='streamlink -p "devour vlc"'
 [ -f /etc/profile.d/autojump.zsh ] && . /etc/profile.d/autojump.zsh
 if command -v fzf-share >/dev/null; then
-    source "$(fzf-share)/key-bindings.bash"
-    source "$(fzf-share)/completion.bash"
+    source "$(fzf-share)/key-bindings.zsh"
+    source "$(fzf-share)/completion.zsh"
 else
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
