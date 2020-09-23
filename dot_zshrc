@@ -4,8 +4,8 @@ plugins=(git zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlig
 
 if [[ $NAME == "Arch Linux" ]]; then
     export ZSH="/home/fedeizzo/.oh-my-zsh"
-    source $ZSH/oh-my-zsh.sh
 fi
+source $ZSH/oh-my-zsh.sh
 
 #my aliases
 alias ls='exa --icons'
