@@ -104,7 +104,6 @@ alias lll='exa -l --icons | less'
 alias lla='exa -la --icons'
 alias llt='exa -T --icons'
 alias code=codium
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias vi='nvim'
 alias lol='sysctl -w abi.vsyscall32=0'
 alias es='wiki s'
@@ -117,12 +116,18 @@ alias enit='trans :it'
 alias iten='trans :en'
 alias dh='notify-send "$(dirs -v)"'
 alias cl='f2() {cd $1;ll};f2'
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 alias tw='streamlink -p "devour vlc"'
 alias streamlink='streamlink -p "devour vlc"'
 [ -f /etc/profile.d/autojump.zsh ] && . /etc/profile.d/autojump.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+if command -v fzf-share >/dev/null; then
+    source "$(fzf-share)/key-bindings.bash"
+    source "$(fzf-share)/completion.bash"
+else
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
 alias vlc="devour vlc"
 alias zathura="devour zathura"
 alias llpp="devour llpp"
