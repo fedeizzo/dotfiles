@@ -1,11 +1,10 @@
-# source /etc/os-release
+source /etc/os-release
 
-plugins=(git zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
-
-# if [[ $NAME == "Arch Linux" ]]; then
-# fi
-export ZSH="/home/fedeizzo/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+if [[ $NAME == "Arch Linux" ]]; then
+    plugins=(git zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
+    export ZSH="/home/fedeizzo/.oh-my-zsh"
+    source $ZSH/oh-my-zsh.sh
+fi
 
 #my aliases
 alias ls='exa --icons'
