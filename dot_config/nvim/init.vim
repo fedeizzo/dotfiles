@@ -119,64 +119,62 @@ augroup mm_buf_cmds
 augroup end
 
 " ##########################################
-" Plugged installation
-" ##########################################
-
-" ##########################################
 " plugin installation
 " ##########################################
-call plug#begin('~/.local/share/nvim/plugged')
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    call plug#begin('~/.local/share/nvim/plugged')
 
-" utility plugins
-Plug 'ryanoasis/vim-devicons'              " icon support
-Plug 'itchyny/lightline.vim'               " status line bottom of the screen
-Plug 'itchyny/vim-cursorword'              " underline same word over cursor
-Plug 'rhysd/accelerated-jk'                " move quickly j and k for navigation 
-Plug 'kshenoy/vim-signature'               " print mark on the left
-Plug 'tpope/vim-commentary'                " comment everything
-Plug 'tpope/vim-surround'                  " swap surround chars
-Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'} " tag bar on the right
-Plug 'macthecadillac/axe', {'on': 'Axe'}   " async command support
-Plug 'junegunn/goyo.vim', {'on': 'Goyo'}                   " focus mode
-Plug '/usr/bin/fzf'                        " fuzzy finder support
-Plug 'junegunn/fzf.vim'                    " fuzzy finder support
-Plug 'dstein64/vim-startuptime', {'on': 'StartupTime'}            " count startup time
-Plug 'mengelbrecht/lightline-bufferline'   " adds buffer top of the screen
-Plug 'yggdroot/indentline'                 " draws indent line
-Plug 'jiangmiao/auto-pairs'                " autoclose brackets
-Plug 'unblevable/quick-scope'              " highlight unique char in word
-Plug 'tpope/vim-fugitive'                  " better git integration
+    " utility plugins
+    Plug 'ryanoasis/vim-devicons'              " icon support
+    Plug 'itchyny/lightline.vim'               " status line bottom of the screen
+    Plug 'itchyny/vim-cursorword'              " underline same word over cursor
+    Plug 'rhysd/accelerated-jk'                " move quickly j and k for navigation 
+    Plug 'kshenoy/vim-signature'               " print mark on the left
+    Plug 'tpope/vim-commentary'                " comment everything
+    Plug 'tpope/vim-surround'                  " swap surround chars
+    Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'} " tag bar on the right
+    Plug 'macthecadillac/axe', {'on': 'Axe'}   " async command support
+    Plug 'junegunn/goyo.vim', {'on': 'Goyo'}                   " focus mode
+    Plug '/usr/bin/fzf'                        " fuzzy finder support
+    Plug 'junegunn/fzf.vim'                    " fuzzy finder support
+    Plug 'dstein64/vim-startuptime', {'on': 'StartupTime'}            " count startup time
+    Plug 'mengelbrecht/lightline-bufferline'   " adds buffer top of the screen
+    Plug 'yggdroot/indentline'                 " draws indent line
+    Plug 'jiangmiao/auto-pairs'                " autoclose brackets
+    Plug 'unblevable/quick-scope'              " highlight unique char in word
+    Plug 'tpope/vim-fugitive'                  " better git integration
 
-" languages plugins
-Plug 'elzr/vim-json', { 'for': 'json' }                       " json support
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }             " markdown support
-Plug 'kovetskiy/sxhkd-vim', {'for': 'sxhkd'}                 " sxhkd support
-Plug 'alaviss/nim.nvim', { 'for': 'nim' }                    " nim support
-Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }                     " vimwiki
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " javascript
-Plug 'mxw/vim-jsx', { 'for': 'javascript' } " jsx
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript
-Plug 'cespare/vim-toml' " toml
-Plug 'LnL7/vim-nix' " nix
+    " languages plugins
+    Plug 'elzr/vim-json', { 'for': 'json' }                       " json support
+    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }             " markdown support
+    Plug 'kovetskiy/sxhkd-vim', {'for': 'sxhkd'}                 " sxhkd support
+    Plug 'alaviss/nim.nvim', { 'for': 'nim' }                    " nim support
+    Plug 'vimwiki/vimwiki', { 'on': 'VimwikiIndex' }                     " vimwiki
+    Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " javascript
+    Plug 'mxw/vim-jsx', { 'for': 'javascript' } " jsx
+    Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } " typescript
+    Plug 'cespare/vim-toml' " toml
+    Plug 'LnL7/vim-nix' " nix
 
-" colorchemes
-Plug 'arcticicestudio/nord-vim'            " colorscheme
+    " colorchemes
+    Plug 'arcticicestudio/nord-vim'            " colorscheme
 
-" lsp plugins 
-Plug 'prabirshrestha/vim-lsp'              " lsp support
-Plug 'prabirshrestha/async.vim'            " async lsp support
-Plug 'mattn/vim-lsp-settings'              " lsp settings preconfigured
+    " lsp plugins 
+    Plug 'prabirshrestha/vim-lsp'              " lsp support
+    Plug 'prabirshrestha/async.vim'            " async lsp support
+    Plug 'mattn/vim-lsp-settings'              " lsp settings preconfigured
 
 
-" autocomplete plugins
-Plug 'prabirshrestha/asyncomplete.vim'     " async autocomplete
-Plug 'prabirshrestha/asyncomplete-lsp.vim' " async lsp autocomplete
+    " autocomplete plugins
+    Plug 'prabirshrestha/asyncomplete.vim'     " async autocomplete
+    Plug 'prabirshrestha/asyncomplete-lsp.vim' " async lsp autocomplete
 
-" snippet plugins
-Plug 'hrsh7th/vim-vsnip'                   " snippet support
-Plug 'hrsh7th/vim-vsnip-integ'             " lsp snippet support
+    " snippet plugins
+    Plug 'hrsh7th/vim-vsnip'                   " snippet support
+    Plug 'hrsh7th/vim-vsnip-integ'             " lsp snippet support
 
-call plug#end()
+    call plug#end()
+endif
 
 " Colorscheme configuration
 set termguicolors
