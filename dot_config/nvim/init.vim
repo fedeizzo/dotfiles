@@ -121,7 +121,7 @@ augroup end
 " ##########################################
 " plugin installation
 " ##########################################
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     call plug#begin('~/.local/share/nvim/plugged')
 
     " utility plugins
