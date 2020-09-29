@@ -16,13 +16,3 @@ killall -q picom
 while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
 
 picom --config /home/fedeizzo/.config/picom/picom.conf -b &
-# monitorHdmi=$(xrandr -q | grep HDMI1 | awk '{print $2}')
-# isHdmiPrimary=$(xrandr -q | grep HDMI1 | awk '{print $3}')
-# monitorDp1=$(xrandr -q | grep '^DP1' | awk '{print $2}')
-# if [[ $monitorHdmi == 'connected' && $isHdmiPrimary != 'primary' ]]
-# then
-#     picom --config /home/fedeizzo/.config/picom/picom.conf -b &
-# elif [[ $monitorDp1 == 'connected' ]]
-# then
-#     picom --config /home/fedeizzo/.config/picom/picom.conf -b &
-# fi

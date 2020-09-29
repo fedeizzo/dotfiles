@@ -35,7 +35,7 @@ else
     # bspc config top_padding 17 # equal to polybar height
 fi
 # Run picom
-/home/fedeizzo/.sources/launchPicom
+launchPicom
 # Run polybar
 # /home/fedeizzo/.sources/launchPolybar
 # Run lemonbar

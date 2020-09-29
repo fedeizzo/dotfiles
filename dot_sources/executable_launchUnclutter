@@ -16,4 +16,4 @@ killall -q unclutter
 while pgrep -u $UID -x unclutter >/dev/null; do sleep 1; done
 
 # Launch unclutter
-/usr/bin/unclutter &
+unclutter &

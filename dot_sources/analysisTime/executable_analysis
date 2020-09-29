@@ -13,5 +13,5 @@
 
 # [ -z $1 ] && echo -e $helpMessage && exit
 
-cd /home/fedeizzo/.sources/analysisTime
+cd analysisTime
 streamlit run analisi.py

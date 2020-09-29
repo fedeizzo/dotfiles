@@ -5,28 +5,20 @@
 # Clear clipboard history
 greenclip clear
 # Run program for keybinds
-/home/fedeizzo/.sources/launchSxhkd
+launchSxhkd
 # Change cursor
-/usr/bin/xsetroot -cursor_name left_ptr &
-# Run autorename workspace
-# /home/fedeizzo/.sources/launchAutorename
-# Run picom
-# /home/fedeizzo/.sources/launchPicom
-# Run polybar
-# /home/fedeizzo/.sources/launchPolybar
+xsetroot -cursor_name left_ptr &
 # Set background
 # /usr/bin/feh --bg-fill /home/fedeizzo/.config/bspwm/sfondo.jpg
-/usr/bin/feh --bg-center --no-fehbg /home/fedeizzo/.config/bspwm/pacwall.png
-# Run conky
-# /home/fedeizzo/.sources/launchConky
+feh --bg-center --no-fehbg /home/fedeizzo/.config/bspwm/pacwall.png
 # Run unclutter
-/home/fedeizzo/.sources/launchUnclutter
+launchUnclutter
 
 # If bspwm is refreshed, remove all previous rules to prevent doubling up
 bspc rule -r "*"
 
 # Create monitor and focus number 1
-/home/fedeizzo/.sources/monitorHandler &
+monitorHandler &
 # bspc desktop -f 1
 
 # Node border

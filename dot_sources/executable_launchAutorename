@@ -16,4 +16,4 @@ killall -q autorenameNodes
 while pgrep -u $UID -x autorenameNodes >/dev/null; do sleep 1; done
 
 # Launch autorenameNodes script
-/home/fedeizzo/.sources/autorenameNodes &
+autorenameNodes &
