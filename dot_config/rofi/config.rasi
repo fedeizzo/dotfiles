@@ -1,5 +1,5 @@
 configuration {
-  modi: "window,run,drun,emoji";
+  modi: "window,run,drun";
   show-icons: true;
   icon-theme: "Papirus";
   drun-display-format: "{icon} {name}";
