@@ -101,8 +101,12 @@ config.set("content.javascript.enabled", True, "chrome://*/*")
 # Type: Bool
 config.set("content.javascript.enabled", True, "qute://*/*")
 
-config.set("url.start_pages", "/data/firefoxNewTab/fedeizzo.github.io/index.html")
-config.set("url.default_page", "/data/firefoxNewTab/fedeizzo.github.io/index.html")
+config.set(
+    "url.start_pages", "/home/fedeizzo/.config/qutebrowser/browser-home/index.html"
+)
+config.set(
+    "url.default_page", "/home/fedeizzo/.config/qutebrowser/browser-home/index.html"
+)
 config.set("url.searchengines", {"DEFAULT": "https://www.google.com/search?q={}"})
 config.set("downloads.location.directory", "/tmp")
 config.set("statusbar.show", "in-mode")
@@ -119,9 +123,13 @@ config.bind("O", "spawn --userscript rofiQutebrowser --tab", mode="normal")
 for i in range(10):
     config.bind(" " + str(i), "tab-focus " + str(1))
 config.bind(
-    " s", "config-cycle statusbar.show", mode="normal",
+    " s",
+    "config-cycle statusbar.show",
+    mode="normal",
 )
 config.bind(
-    " t", "config-cycle tabs.show always multiple", mode="normal",
+    " t",
+    "config-cycle tabs.show always multiple",
+    mode="normal",
 )
 config.source("nord-qutebrowser.py")
