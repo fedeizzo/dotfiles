@@ -72,9 +72,9 @@ super + Return
 	$TERMINAL
 
 # Open dmenu
-# rofi -show drun
+#rofi_spotlight
 super + d
-	rofi_spotlight
+	rofi -show drun
 
 # Block/suspend screen with betterlockscreen
 super + {shift, control} + x
