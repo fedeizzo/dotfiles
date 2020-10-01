@@ -5,20 +5,20 @@
 # Clear clipboard history
 greenclip clear
 # Run program for keybinds
-launchSxhkd
+/home/fedeizzo/.sources/launchSxhkd
 # Change cursor
 xsetroot -cursor_name left_ptr &
 # Set background
 # /usr/bin/feh --bg-fill /home/fedeizzo/.config/bspwm/sfondo.jpg
 feh --bg-center --no-fehbg /home/fedeizzo/.config/bspwm/pacwall.png
 # Run unclutter
-launchUnclutter
+/home/fedeizzo/.sources/launchUnclutter
 
 # If bspwm is refreshed, remove all previous rules to prevent doubling up
 bspc rule -r "*"
 
 # Create monitor and focus number 1
-monitorHandler &
+/home/fedeizzo/.sources/monitorHandler &
 # bspc desktop -f 1
 
 # Node border
