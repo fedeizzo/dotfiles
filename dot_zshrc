@@ -45,3 +45,6 @@ eval $(starship init zsh)
 alias cz="chezmoi"
 alias v="nvim"
 alias open="xdg-open"
+alias cat="bat"
+alias dot='v $(fd --full-path '/home/fedeizzo/nixOs-config/dotfiles' -t f | fzf)'
+alias sou='v $(fd --full-path '/home/fedeizzo/nixOs-config/sources' -t f | fzf)'

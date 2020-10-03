@@ -142,8 +142,9 @@ super + e
 	$TERMINAL --command lf /data
 
 # Toogle lemonbar
-super + {_, shift, ctrl} + u
-	{toggleLemonbar, toggleLemonbar 'minimal.yaml', toggleLemonbar 'time.yaml'}
+# {toggleLemonbar, toggleLemonbar 'minimal.yaml', toggleLemonbar 'time.yaml'}
+super + u
+	toggleBspwmbar
 
 # Open lf on /data
 super + shift + e

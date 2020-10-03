@@ -42,8 +42,8 @@ listview {
 
 element {
   padding: 8;
-  orientation: vertical;
   text-color: @fg;
+  children: [element-icon, element-text];
 }
 
 element selected {
@@ -66,4 +66,8 @@ prompt {
 entry {
   padding: 12;
   text-color: @nord-yellow;
+}
+
+element-icon {
+    size: 1.0em ;
 }

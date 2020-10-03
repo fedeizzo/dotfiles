@@ -15,10 +15,8 @@ let g:lightline = {
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
-    " \             [ 'cocstatus', 'CocCurrentFunction', 'readonly', 'filename', 'modified', 'helloworld' ] ],
 autocmd VimEnter * call SetupLightlineColors()
 function SetupLightlineColors() abort
-  " transparent background in statusbar
   let l:palette = lightline#palette()
 
   let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]

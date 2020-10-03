@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Federico Izzo's bspwm cofig
 
@@ -6,6 +6,7 @@
 greenclip clear
 # Run program for keybinds
 /home/fedeizzo/.sources/launchSxhkd
+# sxhkd &
 # Change cursor
 xsetroot -cursor_name left_ptr &
 # Set background

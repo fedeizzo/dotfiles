@@ -81,11 +81,11 @@ vnoremap  <Leader>y "+y<CR>
 nnoremap <silent> <Leader>c :call AutomaticOutput()<CR>
 
 " fzf files open
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+" let $FZF_DEFAULT_OPTS='--layout=reverse'
+" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
-nnoremap <silent> <Leader>o :call fzf#vim#files(RootFolder())<CR>
-nnoremap <silent> <Leader>O :bufdo bd<CR>
+" nnoremap <silent> <Leader>o :call fzf#vim#files(RootFolder())<CR>
+" nnoremap <silent> <Leader>O :bufdo bd<CR>
 
 " new tab
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
@@ -107,10 +107,10 @@ nnoremap <Leader>g :Goyo<CR>
 augroup mm_buf_cmds
     autocmd!
     autocmd BufWritePost *.vim source %
-    autocmd BufWritePost *.cpp silent :LspDocumentFormat
-    autocmd BufWritePost *.c silent :LspDocumentFormat
-    autocmd BufWritePost *.ts silent :LspDocumentFormat
-    autocmd BufWritePost *.py silent :LspDocumentFormat
+    autocmd BufWritePost *.cpp silent lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePost *.c silent lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePost *.ts silent lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePost *.py silent lua vim.lsp.buf.formatting_sync(nil, 1000)
     au BufNewFile,BufRead *.py set foldmethod=indent
     au BufNewFile,BufRead *.py set autoindent
     autocmd Filetype vimwiki silent nnoremap <silent> <Leader>d :call ToggleTask()<CR>
@@ -135,8 +135,6 @@ Plug 'tpope/vim-surround'                  " swap surround chars
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'} " tag bar on the right
 Plug 'macthecadillac/axe', {'on': 'Axe'}   " async command support
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}                   " focus mode
-Plug '/usr/bin/fzf'                        " fuzzy finder support
-Plug 'junegunn/fzf.vim'                    " fuzzy finder support
 Plug 'dstein64/vim-startuptime', {'on': 'StartupTime'}            " count startup time
 Plug 'mengelbrecht/lightline-bufferline'   " adds buffer top of the screen
 Plug 'yggdroot/indentline'                 " draws indent line
@@ -160,18 +158,31 @@ Plug 'LnL7/vim-nix' " nix
 Plug 'arcticicestudio/nord-vim'            " colorscheme
 
 " lsp plugins 
-Plug 'prabirshrestha/vim-lsp'              " lsp support
-Plug 'prabirshrestha/async.vim'            " async lsp support
-Plug 'mattn/vim-lsp-settings'              " lsp settings preconfigured
+" Plug 'prabirshrestha/vim-lsp'              " lsp support
+" Plug 'prabirshrestha/async.vim'            " async lsp support
+" Plug 'mattn/vim-lsp-settings'              " lsp settings preconfigured
 
 
 " autocomplete plugins
-Plug 'prabirshrestha/asyncomplete.vim'     " async autocomplete
-Plug 'prabirshrestha/asyncomplete-lsp.vim' " async lsp autocomplete
+" Plug 'prabirshrestha/asyncomplete.vim'     " async autocomplete
+" Plug 'prabirshrestha/asyncomplete-lsp.vim' " async lsp autocomplete
 
 " snippet plugins
 Plug 'hrsh7th/vim-vsnip'                   " snippet support
 Plug 'hrsh7th/vim-vsnip-integ'             " lsp snippet support
+
+" lua lsp plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+
+" telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 " endif
@@ -182,3 +193,6 @@ colorscheme nord
 
 " load config settings
 runtime! plugins/*.vim
+
+lua require("lsp")
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
