@@ -181,7 +181,7 @@ Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()

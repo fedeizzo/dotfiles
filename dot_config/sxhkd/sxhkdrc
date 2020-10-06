@@ -106,19 +106,7 @@ super + F1
 
 # Only laptop config
 super + F2
-	changeMonitor eDP1
-
-# HDMI up config
-super + F3
-	changeMonitor hdmiUp
-
-# VGA left config
-super + F4
-	changeMonitor DP1Up
-
-# Only HDMI config
-super + F5
-	changeMonitor hdmi
+	imgur-screenshot
 
 # Open todolist
 super + t
@@ -139,7 +127,7 @@ super + m
 
 # Open lf
 super + e
-	$TERMINAL --command lf /data
+	$TERMINAL --command lf
 
 # Toogle lemonbar
 # {toggleLemonbar, toggleLemonbar 'minimal.yaml', toggleLemonbar 'time.yaml'}
@@ -151,8 +139,9 @@ super + shift + e
 	$TERMINAL -e lf
 
 # Open programs with empty desktop
-super + s ; {l,v}
-	shiftCommand {--work,--vim}
+# shiftCommand {--work,--vim}
+super + s
+	$TERMINAL --command spt
 
 # XF86 playerctl bindigs
 XF86Audio{Play,Next,Prev}
