@@ -107,10 +107,11 @@ nnoremap <Leader>g :Goyo<CR>
 augroup mm_buf_cmds
     autocmd!
     autocmd BufWritePost *.vim source %
-    autocmd BufWritePost *.cpp silent lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePost *.c silent lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePost *.ts silent lua vim.lsp.buf.formatting_sync(nil, 1000)
-    autocmd BufWritePost *.py silent lua vim.lsp.buf.formatting_sync(nil, 1000)
+    autocmd BufWritePost *.cpp silent lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePost *.c silent lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePost *.ts silent lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePost *.py silent lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePost *.hs silent lua vim.lsp.buf.formatting_sync()
     au BufNewFile,BufRead *.py set foldmethod=indent
     au BufNewFile,BufRead *.py set autoindent
     autocmd Filetype vimwiki silent nnoremap <silent> <Leader>d :call ToggleTask()<CR>

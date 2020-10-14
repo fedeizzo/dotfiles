@@ -14,3 +14,6 @@ require'nvim_lsp'.ccls.setup{on_attach=on_attach_ls}
 
 -- dokcer
 require'nvim_lsp'.dockerls.setup{on_attach=on_attach_ls}
+
+--haskell
+require'nvim_lsp'.hls.setup{on_attach=on_attach_ls}

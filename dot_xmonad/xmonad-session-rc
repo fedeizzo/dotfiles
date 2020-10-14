@@ -1,0 +1,22 @@
+xsetroot -cursor-name left_ptr &
+
+# Configure NTP
+timedatectl set-ntp true
+
+# Start picom
+picom -b
+
+# Configure display
+autorandr --change
+
+# Set wallpaper
+feh --bg-center --no-fehbg /home/fedeizzo/.config/bspwm/pacwall.png
+
+# Start unclutter
+unclutter -grab &
+
+# Update lockscreen images
+multilockscreen -u ~/nixOs-config/dotfiles/dot_config/bspwm/sfondo.jpg &
+
+# Launch lockscreen manager
+xss-lock -l -- multilockscreen -l blur --off 600 &
