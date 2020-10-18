@@ -1,26 +1,28 @@
+import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import System.IO
+import System.Process
 import XMonad
-import XMonad.Actions.UpdatePointer
 import XMonad.Actions.GridSelect
+import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
+import XMonad.Hooks.Place
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Spacing
+import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ToggleLayouts
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.NamedWindows
-import XMonad.Prompt.ConfirmPrompt
-import XMonad.Prompt.RunOrRaise
 import XMonad.Prompt
+import XMonad.Prompt.ConfirmPrompt
 import XMonad.Prompt.FuzzyMatch
--- better implementation of dictionaries
+import XMonad.Prompt.Input
+import XMonad.Prompt.RunOrRaise
+import XMonad.Util.NamedWindows
+import XMonad.Util.Run(spawnPipe, runProcessWithInput)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
-import Graphics.X11.ExtraTypes.XF86
 
 ------------------------------------------------------------------------
 -- Terminal
@@ -48,7 +50,20 @@ myAppLauncher = "rofi -show drun"
 -- myPasswordManager = "bwmenu -- -theme onedark"
 
 -- Clipboard manager command
-myClipboardManager = "rofi -show clipboard -modi 'clipboard:greenclip print' -run-command '{cmd}'"
+myClipboardManager = let
+    cmd :: String -> X ()
+    cmd r = spawn $ "echo '" ++ r ++ "' | xclip -sel clip"
+
+    complFun :: ComplFunction
+    complFun s = do
+        -- history <- readFile "/home/fedeizzo/"
+        history <- runProcessWithInput "/home/fedeizzo/.nix-profile/bin/xcmenu" ["-l"] []
+        mkComplFunFromList' (lines history) s
+    in do
+        input <- inputPromptWithCompl myXPConfig "clipboard" complFun
+        case input of
+            Just i -> cmd i
+            _ -> return ()
 
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar.hs"
@@ -112,7 +127,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- TODO confirm to shutdown pc (see also prompt input)
   -- , ((modMask , xK_Escape), confirmPrompt def "shutdown" $ io (exitWith ExitSuccess))
   -- , ((modMask .|. shiftMask, xK_d), windowMenu)
-  , ((modMask, xK_c), spawn myClipboardManager)
+  , ((modMask, xK_c), myClipboardManager)
   , ((0, xF86XK_AudioMute), spawn "pamixer --toggle-mute")
   , ((0, xF86XK_AudioLowerVolume), spawn "pamixer --decrease 5")
   , ((0, xF86XK_AudioRaiseVolume), spawn "pamixer --increase 5")
@@ -155,7 +170,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLogHook = updatePointer (0.5, 0.5) (0, 0) -- exact centre of window
 
-myManageHook = composeAll[ isFullscreen --> (doF W.focusDown <+> doFullFloat)]
+myManageHook = placeHook (fixed (0.5,0.5)) <+> composeAll[
+    className =? "floatTerm"                   --> doFloat,
+    className =? "Xmessage"                    --> doFloat,
+    isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 main = do
     xmproc <- spawnPipe ("xmobar " ++ myXmobarrc)
@@ -186,7 +204,7 @@ defaults = def {
     -- hooks, layouts
     -- layoutHook         = smartBorders $ myLayouts,
     layoutHook            = myLayouts,
-    manageHook         = myManageHook,
+    manageHook            = myManageHook,
     -- startupHook        = myStartupHook
     logHook               = myLogHook
 }
