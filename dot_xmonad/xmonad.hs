@@ -65,6 +65,21 @@ myClipboardManager = let
             Just i -> cmd i
             _ -> return ()
 
+myChangeMonitor = let
+    cmd :: String -> X ()
+    cmd r = spawn $ "/home/fedeizzo/.nix-profile/bin/autorandr -c '" ++ r ++ "'"
+
+    complFun :: ComplFunction
+    complFun s = do
+        history <- runProcessWithInput "/home/fedeizzo/.nix-profile/bin/autorandr" ["--detected"] []
+        mkComplFunFromList' (lines history) s
+    in do
+        input <- inputPromptWithCompl myXPConfig "monitor" complFun
+        case input of
+            Just i -> cmd i
+            _ -> return ()
+
+
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar.hs"
 
@@ -128,6 +143,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- , ((modMask , xK_Escape), confirmPrompt def "shutdown" $ io (exitWith ExitSuccess))
   -- , ((modMask .|. shiftMask, xK_d), windowMenu)
   , ((modMask, xK_c), myClipboardManager)
+  , ((modMask, xK_m), myChangeMonitor)
   , ((0, xF86XK_AudioMute), spawn "pamixer --toggle-mute")
   , ((0, xF86XK_AudioLowerVolume), spawn "pamixer --decrease 5")
   , ((0, xF86XK_AudioRaiseVolume), spawn "pamixer --increase 5")
@@ -147,7 +163,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_Tab), windows W.focusDown)
   , ((modMask, xK_j), windows W.focusDown)
   , ((modMask, xK_k), windows W.focusUp  )
-  , ((modMask, xK_m), windows W.focusMaster  )
+  -- , ((modMask, xK_m), windows W.focusMaster  )
   , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
   , ((modMask .|. shiftMask, xK_j), windows W.swapDown  )
   , ((modMask .|. shiftMask, xK_k), windows W.swapUp    )
