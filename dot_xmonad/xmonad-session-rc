@@ -17,7 +17,7 @@ autorandr --change
 feh --bg-center --no-fehbg /home/fedeizzo/.config/bspwm/pacwall.png
 
 # Start unclutter
-unclutter -grab &
+# unclutter -grab &
 
 # Update lockscreen images
 multilockscreen -u ~/nixOs-config/dotfiles/dot_config/bspwm/sfondo.jpg &
