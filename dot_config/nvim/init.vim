@@ -33,6 +33,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set showtabline=2
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " fold options
 set nofoldenable
@@ -112,8 +114,9 @@ augroup mm_buf_cmds
     autocmd BufWritePost *.ts silent lua vim.lsp.buf.formatting_sync()
     autocmd BufWritePost *.py silent lua vim.lsp.buf.formatting_sync()
     autocmd BufWritePost *.hs silent lua vim.lsp.buf.formatting_sync()
-    au BufNewFile,BufRead *.py set foldmethod=indent
+    " au BufNewFile,BufRead *.py set foldmethod=indent
     au BufNewFile,BufRead *.py set autoindent
+    autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
     autocmd Filetype vimwiki silent nnoremap <silent> <Leader>d :call ToggleTask()<CR>
     autocmd Filetype vimwiki silent nnoremap <silent> <Leader>b :!pdfPreview "%:p"<CR>
     autocmd FileType fzf set nonu nornu
@@ -122,7 +125,6 @@ augroup end
 " ##########################################
 " plugin installation
 " ##########################################
-" if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 call plug#begin('~/.local/share/nvim/plugged')
 
 " utility plugins
@@ -134,7 +136,6 @@ Plug 'kshenoy/vim-signature'               " print mark on the left
 Plug 'tpope/vim-commentary'                " comment everything
 Plug 'tpope/vim-surround'                  " swap surround chars
 Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'} " tag bar on the right
-Plug 'macthecadillac/axe', {'on': 'Axe'}   " async command support
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}                   " focus mode
 Plug 'dstein64/vim-startuptime', {'on': 'StartupTime'}            " count startup time
 Plug 'mengelbrecht/lightline-bufferline'   " adds buffer top of the screen
@@ -159,16 +160,6 @@ Plug 'neovimhaskell/haskell-vim' " haskell
 " colorchemes
 Plug 'arcticicestudio/nord-vim'            " colorscheme
 
-" lsp plugins 
-" Plug 'prabirshrestha/vim-lsp'              " lsp support
-" Plug 'prabirshrestha/async.vim'            " async lsp support
-" Plug 'mattn/vim-lsp-settings'              " lsp settings preconfigured
-
-
-" autocomplete plugins
-" Plug 'prabirshrestha/asyncomplete.vim'     " async autocomplete
-" Plug 'prabirshrestha/asyncomplete-lsp.vim' " async lsp autocomplete
-
 " snippet plugins
 Plug 'hrsh7th/vim-vsnip'                   " snippet support
 Plug 'hrsh7th/vim-vsnip-integ'             " lsp snippet support
@@ -177,17 +168,18 @@ Plug 'hrsh7th/vim-vsnip-integ'             " lsp snippet support
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-
-" telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/telescope.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'steelsojka/completion-buffers'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/completion-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
-" endif
 
 " Colorscheme configuration
 set termguicolors

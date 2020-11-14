@@ -3,9 +3,11 @@ import System.Exit
 import System.IO
 import System.Process
 import XMonad
+import XMonad.Actions.CycleWS
 import XMonad.Actions.GridSelect
 import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.Place
@@ -41,6 +43,9 @@ myScreenshotOnline = "imgur-screenshot"
 
 -- The command to lookup an emoji
 -- myEmoji = "splatmoji type"
+
+-- The command to open file manager
+myFileManager = "alacritty --command lf"
 
 -- The command to use as a launcher, to launch applications that don't have
 -- preset keybindings.
@@ -139,6 +144,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_p), spawn myScreenshotOnline)
   , ((modMask, xK_x), spawn myLockscreen)
   , ((modMask .|. shiftMask, xK_x), spawn mySuspend)
+  , ((modMask, xK_e), spawn myFileManager)
   -- TODO confirm to shutdown pc (see also prompt input)
   -- , ((modMask , xK_Escape), confirmPrompt def "shutdown" $ io (exitWith ExitSuccess))
   -- , ((modMask .|. shiftMask, xK_d), windowMenu)
@@ -160,7 +166,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_n), refresh)
   -- , ((modMask, xK_i), sendMessage MirrorShrink)
   -- , ((modMask, xK_o), sendMessage MirrorExpand)
-  , ((modMask, xK_Tab), windows W.focusDown)
+  -- , ((modMask, xK_Tab), windows W.focusDown)
   , ((modMask, xK_j), windows W.focusDown)
   , ((modMask, xK_k), windows W.focusUp  )
   -- , ((modMask, xK_m), windows W.focusMaster  )
@@ -178,11 +184,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ++
   [((m .|. modMask, k), windows $ f i)
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
   ++
-  [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-      | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-      , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+  [((modMask, xK_Tab   ), moveTo Next NonEmptyWS)]
 
 myLogHook = updatePointer (0.5, 0.5) (0, 0) -- exact centre of window
 
@@ -193,7 +197,7 @@ myManageHook = placeHook (fixed (0.5,0.5)) <+> composeAll[
 
 main = do
     xmproc <- spawnPipe ("xmobar " ++ myXmobarrc)
-    xmonad $ docks defaults {
+    xmonad $ ewmh $ docks defaults {
         logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = xmobarColor xmobarTitleColor "" . shorten 100,

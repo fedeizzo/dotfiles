@@ -3,6 +3,8 @@ xsetroot -cursor-name left_ptr &
 # Configure NTP
 timedatectl set-ntp true
 
+# Start notification daemon
+dunst &
 
 # Start picom
 picom -b

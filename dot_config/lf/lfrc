@@ -51,7 +51,7 @@ cmd fzf_jump ${{
     lf -remote "send $id $cmd \"$res\""
 }}
 
-map o $(dragon-drag-and-drop -a -x "$f")
+map o $(dragon -a -x "$f")
 map gt cd /tmp
 
 # Remove default and add custom find
