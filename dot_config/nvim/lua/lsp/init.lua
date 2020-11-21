@@ -3,26 +3,26 @@ local on_attach_ls = function(client)
 end
 
 -- python
-require'nvim_lsp'.pyls.setup{on_attach=on_attach_ls}
+require'lspconfig'.pyls.setup{on_attach=on_attach_ls}
 
 -- bash
-require'nvim_lsp'.bashls.setup{on_attach=on_attach_ls}
+require'lspconfig'.bashls.setup{on_attach=on_attach_ls}
 
 -- c/c+=
-require'nvim_lsp'.ccls.setup{on_attach=on_attach_ls}
+require'lspconfig'.ccls.setup{on_attach=on_attach_ls}
 
 -- dokcer
-require'nvim_lsp'.dockerls.setup{on_attach=on_attach_ls}
+require'lspconfig'.dockerls.setup{on_attach=on_attach_ls}
 
 --haskell
-require'nvim_lsp'.hls.setup{on_attach=on_attach_ls}
+require'lspconfig'.hls.setup{on_attach=on_attach_ls}
 
 --typescript/javascript
-require'nvim_lsp'.tsserver.setup{on_attach=on_attach_ls}
+require'lspconfig'.tsserver.setup{on_attach=on_attach_ls}
 
 --treesitter
 require'nvim-treesitter.configs'.setup {
-    highlight = { enable = true },
+    highlight = { enable = false },
     incremental_selection = {
         enable = true,
         keymaps = {
@@ -53,4 +53,12 @@ require'nvim-treesitter.configs'.setup {
             },
         },
     },
+}
+
+--debug adapter protocol
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  command = 'python';
+  args = { '-m', 'debugpy.adapter' };
 }

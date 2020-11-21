@@ -18,7 +18,7 @@ let g:completion_chain_complete_list = [
 let g:completion_chain_complete_list = {
 			\'default' : {
 			\	'default' : [
-			\		{'complete_items' : ['lsp', 'snippet']},
+			\		{'complete_items' : ['lsp', 'snippet', 'path']},
 			\		{'mode' : '<c-p>'},
 			\		{'mode' : '<c-n>'}
 			\	],
@@ -26,22 +26,22 @@ let g:completion_chain_complete_list = {
 			\	'string' : []
 			\	},
 			\'typescript' : [
-			\	{'complete_items': ['lsp', 'snippet', 'ts']},
+			\	{'complete_items': ['lsp', 'snippet', 'ts', 'path']},
 			\	{'mode' : '<c-p>'},
 			\	{'mode' : '<c-n>'}
 			\	],
 			\'bash' : [
-			\	{'complete_items': ['lsp', 'snippet', 'ts']},
+			\	{'complete_items': ['lsp', 'snippet', 'ts', 'path']},
 			\	{'mode' : '<c-p>'},
 			\	{'mode' : '<c-n>'}
 			\	],
 			\'python' : [
-			\	{'complete_items': ['lsp', 'snippet', 'ts']},
+			\	{'complete_items': ['lsp', 'snippet', 'ts', 'path']},
 			\	{'mode' : '<c-p>'},
 			\	{'mode' : '<c-n>'}
 			\	],
 			\'lua' : [
-			\	{'complete_items': ['snippet', 'ts']},
+			\	{'complete_items': ['snippet', 'ts', 'path']},
 			\	{'mode' : '<c-p>'},
 			\	{'mode' : '<c-n>'}
 			\	],

@@ -15,6 +15,7 @@ let g:lightline = {
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [[]]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline#bufferline#show_number = 2
 autocmd VimEnter * call SetupLightlineColors()
 function SetupLightlineColors() abort
   let l:palette = lightline#palette()

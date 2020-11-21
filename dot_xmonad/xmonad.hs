@@ -4,6 +4,7 @@ import System.IO
 import System.Process
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Actions.Search
 import XMonad.Actions.GridSelect
 import XMonad.Actions.UpdatePointer
 import XMonad.Hooks.DynamicLog
@@ -22,6 +23,7 @@ import XMonad.Prompt.FuzzyMatch
 import XMonad.Prompt.Input
 import XMonad.Prompt.RunOrRaise
 import XMonad.Util.NamedWindows
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run(spawnPipe, runProcessWithInput)
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
@@ -84,6 +86,11 @@ myChangeMonitor = let
             Just i -> cmd i
             _ -> return ()
 
+myScratchpads = [
+        NS "telegram" "telegram-desktop" (className =? "TelegramDesktop") defaultFloating,
+        NS "terminal" "alacritty --class scratchpad,scratchpad" (className =? "scratchpad") defaultFloating,
+        NS "lf" "alacritty --class lfScratchpad,lfScratchpad --command lf" (className =? "lfScratchpad") defaultFloating
+    ]
 
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar.hs"
@@ -138,6 +145,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
   -- , ((modMask, xK_d), spawn myAppLauncher)
   , ((modMask, xK_d), runOrRaisePrompt myXPConfig)
+  , ((modMask, xK_f), promptSearch myXPConfig google)
+  , ((modMask, xK_u), namedScratchpadAction myScratchpads "telegram")
+  , ((modMask, xK_i), namedScratchpadAction myScratchpads "terminal")
+  , ((modMask, xK_o), namedScratchpadAction myScratchpads "lf")
   , ((modMask, xK_g), goToSelected $ myGsconfig myColorizedConfig)
   , ((modMask .|. shiftMask, xK_g), bringSelected $ myGsconfig myColorizedConfig)
   , ((modMask, xK_p), spawn myScreenshot)
@@ -190,7 +201,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 myLogHook = updatePointer (0.5, 0.5) (0, 0) -- exact centre of window
 
-myManageHook = placeHook (fixed (0.5,0.5)) <+> composeAll[
+myManageHook = placeHook (fixed (0.5,0.5)) <+> namedScratchpadManageHook myScratchpads <+> composeAll[
     className =? "floatTerm"                   --> doFloat,
     className =? "Xmessage"                    --> doFloat,
     isFullscreen --> (doF W.focusDown <+> doFullFloat)]

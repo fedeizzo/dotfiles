@@ -1,130 +1,5 @@
-" ##########################################
-" CLASSIC VIM CONFIG
-" ##########################################
-" set UTF-8 encoding
-set enc=utf-8
-set fenc=utf-8
-set termencoding=utf-8
-
 runtime! customScript/*.vim
 
-" disable vi compatibily
-set nocompatible
-
-" set path to load all file in directory
-set path+=**
-
-" display all mathcing file during tab complete
-if has("wildmenu")
-    set wildignore+=*.a,*.o
-    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
-    set wildignore+=.DS_Store,.git,.hg,.svn
-    set wildignore+=*~,*.swp,*.tmp
-    set wildmenu
-endif
-inoremap <Tab> <C-X><C-F>
- 
-" intendt options
-set autoindent
-set smartindent
-
-" tab options
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set showtabline=2
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-" fold options
-set nofoldenable
-
-" show keystroke currently entering
-set showcmd
-
-" set mapleader to space
-let mapleader=' '
-
-" highlight syntax
-syntax on
-filetype plugin on
-
-" line number
-set number
-set relativenumber
-
-" enable mouse navigation
-set mouse=a
-
-" new tab appear
-set splitbelow
-
-" highlight for shearching
-set hlsearch
-
-" add spellcheck
-set spelllang+=it
-set spell
-
-" ##########################################
-" custom classic vim config
-" ##########################################
-" change esc button to jk in inser mode
-imap jk <Esc>zz
-
-" remove highlight for searching
-nnoremap <silent> <Leader>h :noh<CR>
-
-" remap for clipboard register
-nnoremap  <Leader>y "+
-vnoremap  <Leader>y "+y<CR>
-
-" add automatic output
-nnoremap <silent> <Leader>c :call AutomaticOutput()<CR>
-
-" fzf files open
-" let $FZF_DEFAULT_OPTS='--layout=reverse'
-" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-" nnoremap <silent> <Leader>o :call fzf#vim#files(RootFolder())<CR>
-" nnoremap <silent> <Leader>O :bufdo bd<CR>
-
-" new tab
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
-" save & quit shortcut
-nnoremap <silent> <Leader>a :w<CR>
-nnoremap <silent> <Leader>q :q<CR>
-
-" change split navigatin
-nnoremap  <C-h> <C-w><C-h>
-nnoremap  <C-j> <C-w><C-j>
-nnoremap  <C-k> <C-w><C-k>
-nnoremap  <C-l> <C-w><C-l>
-
-" Goyo keybind
-nnoremap <Leader>g :Goyo<CR>
-
-" autocmd group
-augroup mm_buf_cmds
-    autocmd!
-    autocmd BufWritePost *.vim source %
-    autocmd BufWritePost *.cpp silent lua vim.lsp.buf.formatting_sync()
-    autocmd BufWritePost *.c silent lua vim.lsp.buf.formatting_sync()
-    autocmd BufWritePost *.ts silent lua vim.lsp.buf.formatting_sync()
-    autocmd BufWritePost *.py silent lua vim.lsp.buf.formatting_sync()
-    autocmd BufWritePost *.hs silent lua vim.lsp.buf.formatting_sync()
-    " au BufNewFile,BufRead *.py set foldmethod=indent
-    au BufNewFile,BufRead *.py set autoindent
-    autocmd Filetype typescript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-    autocmd Filetype vimwiki silent nnoremap <silent> <Leader>d :call ToggleTask()<CR>
-    autocmd Filetype vimwiki silent nnoremap <silent> <Leader>b :!pdfPreview "%:p"<CR>
-    autocmd FileType fzf set nonu nornu
-augroup end
-
-" ##########################################
-" plugin installation
-" ##########################################
 call plug#begin('~/.local/share/nvim/plugged')
 
 " utility plugins
@@ -179,14 +54,11 @@ Plug 'nvim-treesitter/completion-treesitter'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'romgrk/nvim-treesitter-context'
 
+" lua dap plugins
+Plug 'mfussenegger/nvim-dap'
+
 call plug#end()
 
-" Colorscheme configuration
-set termguicolors
-colorscheme nord
-
-" load config settings
 runtime! plugins/*.vim
 
-lua require("lsp")
-setlocal omnifunc=v:lua.vim.lsp.omnifunc
+lua require('init')
