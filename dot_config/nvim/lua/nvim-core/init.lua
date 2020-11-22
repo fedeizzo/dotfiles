@@ -85,15 +85,13 @@ local function keymaps()
         nnoremap = {
             {'<silent> <Leader>h', ':noh<CR>'                   };
             {'<Leader>y'         , '"+'                         };
-            {'<silent> <Leader>c', ':call AutomaticOutput()<CR>'};
-            {'<silent> <Leader>t', ':TagbarToggle<CR>'          };
+            {'<silent> <Leader>c', ':lua automaticOutput()<CR>' };
             {'<silent> <Leader>a', ':w<CR>'                     };
             {'<silent> <Leader>q', ':q<CR>'                     };
             {'<C-h>'             , '<C-w><C-h>'                 };
             {'<C-j>'             , '<C-w><C-j>'                 };
             {'<C-k>'             , '<C-w><C-k>'                 };
             {'<C-l>'             , '<C-w><C-l>'                 };
-            {'<Leader>g'         , ':Goyo<CR>'                  };
         };
         vnoremap = {
             {'<Leader>y'         , '"+y<CR>'                    };

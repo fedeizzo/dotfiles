@@ -57,8 +57,10 @@ Plug 'romgrk/nvim-treesitter-context'
 " lua dap plugins
 Plug 'mfussenegger/nvim-dap'
 
+" start page
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 
-runtime! plugins/*.vim
-
 lua require('init')
+runtime! plugins/*.vim

@@ -1,4 +1,6 @@
 nnoremap <silent> <Leader>o :lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <silent> <Leader>t :lua require'telescope.builtin'.treesitter{}<CR>
+nnoremap <silent> <Leader>g :lua require'telescope.builtin'.git_bcommits{}<CR>
 " nnoremap <silent> <Leader>O :lua require'telescope.builtin'.find_files{cwd=RootFinder()}
 
 nnoremap <silent> <Leader>f :lua require'telescope.builtin'.live_grep{}<CR>
