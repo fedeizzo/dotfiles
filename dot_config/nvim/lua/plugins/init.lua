@@ -35,17 +35,17 @@ return require('packer').startup(function()
     use 'mhinz/vim-startify'
 
     -- LANGUAGE SUPPORT
-    use {'elzr/vim-json',                    ft='json'}
-    use {'plasticboy/vim-markdown',      ft='markdown'}
-    use {'kovetskiy/sxhkd-vim',             ft='sxhkd'}
-    use {'alaviss/nim.nvim',                  ft='nim'}
-    use {'vimwiki/vimwiki',         cmd='VimwikiIndex'}
-    use {'pangloss/vim-javascript',    ft='javascript'}
-    use {'mxw/vim-jsx',                ft='javascript'}
-    use {'leafgarland/typescript-vim', ft='typescript'}
-    use {'cespare/vim-toml',                 ft='toml'}
-    use {'LnL7/vim-nix',                      ft='nix'}
-    use {'neovimhaskell/haskell-vim',     ft='haskell'}
+    use {'elzr/vim-json',                      ft='json'}
+    use {'plasticboy/vim-markdown',        ft='markdown'}
+    use {'kovetskiy/sxhkd-vim',               ft='sxhkd'}
+    use {'alaviss/nim.nvim',                    ft='nim'}
+    use {'vimwiki/vimwiki',           cmd='VimwikiIndex'}
+    use {'pangloss/vim-javascript',      ft='javascript'}
+    use {'mxw/vim-jsx',                  ft='javascript'}
+    use {'HerringtonDarkholme/yats.vim', ft='typescript'}
+    use {'cespare/vim-toml',                   ft='toml'}
+    use {'LnL7/vim-nix',                        ft='nix'}
+    use {'tbastos/vim-lua',                     ft='lua'}
     
     -- COLORSCHEME
     use 'arcticicestudio/nord-vim'

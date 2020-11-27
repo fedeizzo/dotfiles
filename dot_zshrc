@@ -48,3 +48,4 @@ alias open="xdg-open"
 alias cat="bat"
 alias dot='v $(fd --full-path '/home/fedeizzo/nixOs-config/dotfiles' -t f | fzf)'
 alias sou='v $(fd --full-path '/home/fedeizzo/nixOs-config/sources' -t f | fzf)'
+alias ssh='TERM=xterm-256color ssh'
