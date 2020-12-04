@@ -44,7 +44,7 @@ local function core_options()
     }
     local options = {
         {'syntax', 'on'};
-        {'filetype', 'plugin', 'on'};
+        {'filetype', 'plugin indent', 'on'};
         {'colorscheme', 'nord'};
         {'setlocal', 'omnifunc=v:lua.vim.lsp.omnifunc'};
     };

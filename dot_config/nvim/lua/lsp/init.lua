@@ -20,6 +20,9 @@ require'lspconfig'.hls.setup{on_attach=on_attach_ls}
 --typescript/javascript
 require'lspconfig'.tsserver.setup{on_attach=on_attach_ls}
 
+--rust
+require'lspconfig'.rust_analyzer.setup{on_attach=on_attach_ls}
+
 --treesitter
 require'nvim-treesitter.configs'.setup {
     highlight = { enable = false },

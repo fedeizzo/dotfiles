@@ -11,6 +11,7 @@ picom -b
 
 # Start clipboardManager
 xcmenu -d
+xcmenu -C
 
 # Configure display
 autorandr --change

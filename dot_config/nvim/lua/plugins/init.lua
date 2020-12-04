@@ -45,7 +45,7 @@ return require('packer').startup(function()
     use {'HerringtonDarkholme/yats.vim', ft='typescript'}
     use {'cespare/vim-toml',                   ft='toml'}
     use {'LnL7/vim-nix',                        ft='nix'}
-    use {'tbastos/vim-lua',                     ft='lua'}
+    use {'tbastos/vim-lua',                     ft='lua'} -- 'tjdevries/nlua.nvim' TODO try this one
     
     -- COLORSCHEME
     use 'arcticicestudio/nord-vim'
