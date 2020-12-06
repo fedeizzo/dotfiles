@@ -53,9 +53,6 @@ myFileManager = "alacritty --command lf"
 -- preset keybindings.
 myAppLauncher = "rofi -show drun"
 
--- Password manager command
--- myPasswordManager = "bwmenu -- -theme onedark"
-
 -- Clipboard manager command
 myClipboardManager = let
     cmd :: String -> X ()
@@ -63,7 +60,6 @@ myClipboardManager = let
 
     complFun :: ComplFunction
     complFun s = do
-        -- history <- readFile "/home/fedeizzo/"
         history <- runProcessWithInput "/home/fedeizzo/.nix-profile/bin/xcmenu" ["-l"] []
         mkComplFunFromList' (lines history) s
     in do
@@ -85,6 +81,8 @@ myChangeMonitor = let
         case input of
             Just i -> cmd i
             _ -> return ()
+
+myPasswordManager = "/home/fedeizzo/.sources/rbwAutofill"
 
 myScratchpads = [
         NS "telegram" "telegram-desktop" (className =? "TelegramDesktop") defaultFloating,
@@ -161,6 +159,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- , ((modMask .|. shiftMask, xK_d), windowMenu)
   , ((modMask, xK_c), myClipboardManager)
   , ((modMask, xK_m), myChangeMonitor)
+  , ((modMask, xK_b), spawn myPasswordManager)
   , ((0, xF86XK_AudioMute), spawn "pamixer --toggle-mute")
   , ((0, xF86XK_AudioLowerVolume), spawn "pamixer --decrease 5")
   , ((0, xF86XK_AudioRaiseVolume), spawn "pamixer --increase 5")
@@ -204,6 +203,7 @@ myLogHook = updatePointer (0.5, 0.5) (0, 0) -- exact centre of window
 myManageHook = placeHook (fixed (0.5,0.5)) <+> namedScratchpadManageHook myScratchpads <+> composeAll[
     className =? "floatTerm"                   --> doFloat,
     className =? "Xmessage"                    --> doFloat,
+    className =? "rbwAutofill"                 --> defaultFloating,
     isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 main = do

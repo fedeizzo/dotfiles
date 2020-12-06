@@ -69,6 +69,8 @@ local function load_autocommands()
             {'FileType', 'vimwiki'   , 'silent nnoremap <silent> <Leader>d :call ToggleTask()<CR>'};
             {'FileType', 'vimwiki'   , 'silent nnoremap <silent> <Leader>b :!pdfPreview "%:p"<CR>'};
             {'FileType', 'fzf'       , 'set nonu nrnu'                                            };
+            {'FileType', 'git'       , 'setlocal nospell'                                         };
+            {'FileType', 'qf'       , 'setlocal nospell'                                         };
         };
     }
     createAutogroups(autogroups)   
@@ -77,24 +79,25 @@ end
 local function keymaps()
     local maps = {
         imap = {
-            {'jk'                , '<Esc>zz'                    };
+            {'jk'                 , '<Esc>zz'                    };
         }; 
         inoremap = {
-            {'<Tab>'             , '<C-X><C-F>'                 };
+            {'<Tab>'              , '<C-X><C-F>'                 };
         };
         nnoremap = {
-            {'<silent> <Leader>h', ':noh<CR>'                   };
-            {'<Leader>y'         , '"+'                         };
-            {'<silent> <Leader>c', ':lua automaticOutput()<CR>' };
-            {'<silent> <Leader>a', ':w<CR>'                     };
-            {'<silent> <Leader>q', ':q<CR>'                     };
-            {'<C-h>'             , '<C-w><C-h>'                 };
-            {'<C-j>'             , '<C-w><C-j>'                 };
-            {'<C-k>'             , '<C-w><C-k>'                 };
-            {'<C-l>'             , '<C-w><C-l>'                 };
+            {'<silent> <Leader>h' , ':noh<CR>'                   };
+            {'<silent> <Leader>dd', ':bd<CR>'                   };
+            {'<Leader>y'          , '"+'                         };
+            {'<silent> <Leader>c' , ':lua automaticOutput()<CR>' };
+            {'<silent> <Leader>a' , ':w<CR>'                     };
+            {'<silent> <Leader>q' , ':q<CR>'                     };
+            {'<C-h>'              , '<C-w><C-h>'                 };
+            {'<C-j>'              , '<C-w><C-j>'                 };
+            {'<C-k>'              , '<C-w><C-k>'                 };
+            {'<C-l>'              , '<C-w><C-l>'                 };
         };
         vnoremap = {
-            {'<Leader>y'         , '"+y<CR>'                    };
+            {'<Leader>y'          , '"+y<CR>'                    };
         };
     }
     createKeymaps(maps)

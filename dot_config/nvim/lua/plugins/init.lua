@@ -33,6 +33,13 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     -- start page
     use 'mhinz/vim-startify'
+    -- note taking
+    use {
+        'fiatjaf/neuron.vim', requires = {
+            {'junegunn/fzf.vim'},
+            {'junegunn/fzf'}
+        }
+    }
 
     -- LANGUAGE SUPPORT
     use {'elzr/vim-json',                      ft='json'}
